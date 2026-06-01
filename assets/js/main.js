@@ -1,6 +1,6 @@
 // --- CONFIGURACIÓN DE TUS APIS ---
-const API_URL = "http://192.168.1.68:5000/api/movimiento/registro";
-const WS_URL = "ws://192.168.1.68:5001/";
+const API_URL = "http://192.168.56.1:5000/api/movimiento/registro";
+const WS_URL = "ws://192.168.56.1:5001/";
 
 // --- 1. LÓGICA DE NAVEGACIÓN SIDECAR (matching screenshots) ---
 const navControl = document.getElementById("nav-control");
