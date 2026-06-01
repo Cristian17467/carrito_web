@@ -12,8 +12,8 @@
 </head>
 <body>
 
-    <nav class="glass-panel px-4 py-3 mx-4 mt-3 d-flex justify-content-between align-items-center">
-        <h5 class="mb-0 text-info fw-bold"><i class="bi bi-cpu"></i> Panel de Control IoT AWS</h5>
+    <nav class="glass-panel px-4 py-3 mx-4 mt-3 d-flex justify-content-between align-items-center responsive-nav">
+        <h5 class="mb-0 text-info fw-bold"><i class="bi bi-cpu"></i> Panel IoT AWS</h5>
         <div>
             <span id="ws-badge" class="badge bg-danger fs-6 shadow">Desconectado</span>
         </div>
@@ -22,13 +22,13 @@
     <div class="wrapper">
         
         <aside class="sidebar">
-            <div class="sidebar-title">📡 Menú Principal</div>
-            <div class="nav-buttons-container mt-2">
+            <div class="sidebar-title d-none d-lg-block">📡 Menú Principal</div>
+            <div class="nav-buttons-container mt-2 mt-lg-3">
                 <button class="nav-btn active" id="nav-control">
-                    <i class="bi bi-controller fs-5"></i> Control Manual
+                    <i class="bi bi-controller fs-5"></i> <span class="nav-text">Control Manual</span>
                 </button>
                 <button class="nav-btn" id="nav-monitoreo">
-                    <i class="bi bi-speedometer2 fs-5"></i> Telemetría
+                    <i class="bi bi-speedometer2 fs-5"></i> <span class="nav-text">Telemetría</span>
                 </button>
             </div>
         </aside>
@@ -36,9 +36,9 @@
         <main class="main-content">
 
             <div class="h-100 view-active" id="view-control">
-                <div class="row h-100">
+                <div class="row h-100 m-0">
                     
-                    <div class="col-4 d-flex flex-column align-items-center justify-content-center border-end border-light border-opacity-10">
+                    <div class="col-12 col-lg-4 d-flex flex-column align-items-center justify-content-center border-lg-end border-light border-opacity-10 mb-4 mb-lg-0 py-3">
                         <h4 class="text-info mb-4 fw-light text-uppercase tracking-wide">Dirección</h4>
                         
                         <div class="d-grid gap-2 text-center mb-4" style="grid-template-columns: repeat(3, 70px); grid-template-rows: repeat(3, 70px);">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
 
-                    <div class="col-4 d-flex flex-column align-items-center justify-content-center border-end border-light border-opacity-10 px-4">
+                    <div class="col-12 col-lg-4 d-flex flex-column align-items-center justify-content-center border-lg-end border-light border-opacity-10 px-4 mb-4 mb-lg-0 py-3">
                         <h4 class="text-info mb-4 fw-light text-uppercase tracking-wide">Potencia</h4>
                         <input type="range" class="form-range mb-2 custom-range" id="rangoVelocidad" min="0" max="100" value="50" oninput="cambiarVelocidad(this.value)">
                         <p class="mb-5 text-muted fs-5">Nivel: <span id="textoVelocidad" class="text-white fw-bold">50%</span></p>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
 
-                    <div class="col-4 d-flex flex-column h-100">
+                    <div class="col-12 col-lg-4 d-flex flex-column h-100 py-3">
                         <h4 class="text-info text-center mb-4 fw-light text-uppercase tracking-wide">Monitor</h4>
                         
                         <div class="card text-center mb-3 p-3">
@@ -88,23 +88,23 @@
                             <h4 id="monitor-obstaculo" class="text-success fw-bold m-0" style="transition: all 0.3s ease;">CAMINO LIBRE</h4>
                         </div>
 
-                        <div class="glass-panel terminal-window flex-grow-1 p-3 text-success overflow-auto" id="terminal" style="font-size: 0.85rem; line-height: 1.5;">
-                            </div>
+                        <div class="glass-panel terminal-window flex-grow-1 p-3 text-success overflow-auto" id="terminal" style="font-size: 0.85rem; line-height: 1.5; min-height: 200px;">
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="h-100 d-none" id="view-monitoreo">
-                <div class="row h-100">
-                    <div class="col-md-5 d-flex flex-column gap-3 h-100">
-                        <div class="card h-50 d-flex justify-content-center align-items-center" style="border-color: rgba(56, 189, 248, 0.3) !important;">
+                <div class="row h-100 m-0">
+                    <div class="col-12 col-lg-5 d-flex flex-column gap-3 h-100 mb-4 mb-lg-0 py-3">
+                        <div class="card flex-grow-1 d-flex justify-content-center align-items-center" style="border-color: rgba(56, 189, 248, 0.3) !important; min-height: 200px;">
                             <div class="card-body text-center w-100 d-flex flex-column justify-content-center">
                                 <h2 class="text-info mb-4 fw-light"><i class="bi bi-arrows-move"></i> Estatus de Tracción</h2>
                                 <h1 class="display-4 fw-bold text-white text-shadow-glow" id="monitoreo-movimiento-big">DETENIDO</h1>
                             </div>
                         </div>
 
-                        <div class="card h-50 d-flex justify-content-center align-items-center" id="card-sensor-big" style="border-color: rgba(250, 204, 21, 0.3) !important;">
+                        <div class="card flex-grow-1 d-flex justify-content-center align-items-center" id="card-sensor-big" style="border-color: rgba(250, 204, 21, 0.3) !important; min-height: 200px;">
                             <div class="card-body text-center w-100 d-flex flex-column justify-content-center">
                                 <h2 class="text-warning mb-4 fw-light"><i class="bi bi-broadcast"></i> Radar Frontal</h2>
                                 <h1 class="display-4 fw-bold text-success" id="monitoreo-obstaculo-big" style="transition: all 0.3s ease;">VÍA LIBRE</h1>
@@ -112,28 +112,28 @@
                         </div>
                     </div>
 
-                    <div class="col-md-7 h-100">
-                        <div class="card h-100 d-flex flex-column overflow-hidden">
-                            <div class="p-3 border-bottom border-light border-opacity-10 d-flex justify-content-between align-items-center" style="background: rgba(255,255,255,0.02);">
-    <h5 class="mb-0 text-info fw-light">Bitácora de Telemetría</h5>
-    <div>
-        <button class="btn btn-sm btn-outline-success me-2 rounded-pill" onclick="descargarCSV()">
-            <i class="bi bi-download"></i> CSV
-        </button>
-        <span class="badge bg-primary text-light shadow-sm">Memoria Local</span>
-    </div>
-</div>
-<div class="p-3 border-bottom border-light border-opacity-10" style="height: 200px; background: rgba(0,0,0,0.2);">
-    <canvas id="graficaTelemetria"></canvas>
-</div>
+                    <div class="col-12 col-lg-7 h-100 py-3 d-flex flex-column">
+                        <div class="card flex-grow-1 d-flex flex-column overflow-hidden" style="min-height: 500px;">
+                            <div class="p-3 border-bottom border-light border-opacity-10 d-flex flex-wrap justify-content-between align-items-center gap-2" style="background: rgba(255,255,255,0.02);">
+                                <h5 class="mb-0 text-info fw-light">Bitácora de Telemetría</h5>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-success me-2 rounded-pill" onclick="descargarCSV()">
+                                        <i class="bi bi-download"></i> CSV
+                                    </button>
+                                    <span class="badge bg-primary text-light shadow-sm">Memoria Local</span>
+                                </div>
+                            </div>
+                            <div class="p-3 border-bottom border-light border-opacity-10" style="height: 250px; background: rgba(0,0,0,0.2);">
+                                <canvas id="graficaTelemetria"></canvas>
+                            </div>
                             <div class="card-body p-0 flex-grow-1 overflow-auto">
-                                <table class="table table-dark table-hover m-0 h-100 text-center border-0">
+                                <table class="table table-dark table-hover m-0 w-100 text-center border-0">
                                     <thead style="background: rgba(0,0,0,0.3);">
                                         <tr>
                                             <th scope="col" class="border-0 py-3 text-muted fw-normal">#</th>
                                             <th scope="col" class="border-0 py-3 text-muted fw-normal">Hora</th>
-                                            <th scope="col" class="border-0 py-3 text-muted fw-normal">Acción / Movimiento</th>
-                                            <th scope="col" class="border-0 py-3 text-muted fw-normal">Estado Obstáculo</th>
+                                            <th scope="col" class="border-0 py-3 text-muted fw-normal">Acción</th>
+                                            <th scope="col" class="border-0 py-3 text-muted fw-normal">Obstáculo</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tabla-historial">

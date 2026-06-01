@@ -8,25 +8,22 @@
 }
 
 body {
-    /* Tus reglas originales intactas */
-    overflow: hidden !important; 
-    height: 100vh;
-    /* Nueva fuente y diseño layout */
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: radial-gradient(circle at 20% 30%, #1a1f36 0%, #0d0f18 100%);
     color: #f3f4f6;
     display: flex;
     flex-direction: column;
+    height: 100vh; /* En desktop ocupa la pantalla exacta */
+    overflow: hidden; /* Desktop sin scroll global */
 }
 
 .wrapper {
-    /* Tu wrapper original ahora adaptado para el layout moderno */
     flex: 1;
     display: flex;
     padding: 20px;
     gap: 20px;
-    height: calc(100vh - 60px); /* Deja espacio exacto para el footer */
-    overflow: hidden; /* Mantiene tu regla de no scroll */
+    height: calc(100vh - 60px); 
+    overflow: hidden; 
 }
 
 /* --- 2. EFECTO DE VIDRIO CORE (GLASSMORPHISM) --- */
@@ -42,10 +39,8 @@ body {
 
 /* --- 3. SIDEBAR Y CONTENIDO PRINCIPAL --- */
 .sidebar {
-    /* Tus reglas originales */
     width: 260px;
     flex-shrink: 0;
-    /* Estilos Glassmorphism añadidos a tu sidebar */
     display: flex;
     flex-direction: column;
     padding: 25px 20px;
@@ -57,12 +52,12 @@ body {
 }
 
 .main-content {
-    /* Tus reglas originales intactas */
     flex-grow: 1;
-    overflow: hidden;
+    overflow-y: auto; /* Permite scroll interno si la terminal crece */
+    overflow-x: hidden;
 }
 
-/* Hidden class for SPA (Tuyo, Intacto) */
+/* Hidden class for SPA */
 .d-none { display: none !important; }
 
 /* --- 4. ESTILOS DE BOTONES DEL SIDEBAR --- */
@@ -91,7 +86,6 @@ body {
     border-color: rgba(56, 189, 248, 0.4);
 }
 
-/* Botón activo con efecto luminoso azul */
 .nav-btn.active, .nav-btn.text-white { 
     background: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
     border: 1px solid rgba(56, 189, 248, 0.5) !important;
@@ -99,7 +93,7 @@ body {
     box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
 }
 
-/* --- 5. COMPONENTES INTERNOS (Para que tus tarjetas actuales brillen) --- */
+/* --- 5. COMPONENTES INTERNOS --- */
 .card, .bg-dark {
     background: rgba(255, 255, 255, 0.03) !important;
     backdrop-filter: blur(16px);
@@ -150,9 +144,8 @@ body {
     text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
 }
 
-/* --- 7. TUS CLASES DE ALERTAS Y TABLAS (Intactas pero mejoradas visualmente) --- */
+/* --- 7. ALERTAS Y TABLAS --- */
 .alerta-obstaculo {
-    /* Tu rojo oscuro original, ahora semi-transparente para conservar el blur de fondo */
     background-color: rgba(74, 0, 0, 0.8) !important; 
     border: 1px solid #ff0000 !important;
     animation: parpadeo 1s infinite alternate;
@@ -161,13 +154,13 @@ body {
 .alerta-texto {
     color: #ff4d4d !important;
     font-weight: bold;
-    text-shadow: 0 0 8px rgba(255, 77, 77, 0.4); /* Le damos un aura brillante al texto */
+    text-shadow: 0 0 8px rgba(255, 77, 77, 0.4);
 }
 
 @keyframes parpadeo {
     from { 
         opacity: 1; 
-        box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); /* Brillo de neón alerta */
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); 
     }
     to { 
         opacity: 0.7; 
@@ -175,7 +168,6 @@ body {
     }
 }
 
-/* --- AJUSTES TABLA DE MONITOREO ORIGINALES --- */
 .table-dark {
     --bs-table-bg: transparent;
     color: #f3f4f6;
@@ -183,39 +175,102 @@ body {
 .table td, .table th {
     vertical-align: middle;
     font-size: 1.1rem;
-    border-bottom-color: rgba(255, 255, 255, 0.05) !important; /* Líneas suaves */
+    border-bottom-color: rgba(255, 255, 255, 0.05) !important;
 }
 
-/* =========================================
-   MEJORAS PREMIUM (SCROLLBAR Y MATRIX)
-   ========================================= */
+/* --- SCROLLBAR NEÓN --- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.5); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.9); }
 
-/* Ocultar barra de Windows y crear Scrollbar Neón */
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb {
-    background: rgba(56, 189, 248, 0.5); /* Azul neón semi-transparente */
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(56, 189, 248, 0.9);
-}
-
-/* Efecto Matrix para la terminal */
-.terminal-window {
-    text-shadow: 0 0 5px rgba(34, 197, 94, 0.5); /* Resplandor verde */
-}
-.nuevo-log {
-    animation: aparecerMatrix 0.3s ease-out forwards;
-}
+/* --- EFECTO MATRIX TERMINAL --- */
+.terminal-window { text-shadow: 0 0 5px rgba(34, 197, 94, 0.5); }
+.nuevo-log { animation: aparecerMatrix 0.3s ease-out forwards; }
 
 @keyframes aparecerMatrix {
     0% { opacity: 0; transform: translateX(-10px); color: #fff; }
     100% { opacity: 1; transform: translateX(0); color: #22c55e; }
+}
+
+/* ==========================================================================
+   📱 MAGIA RESPONSIVA (CELULARES Y TABLETS)
+   ========================================================================== */
+
+@media (max-width: 991px) {
+    /* Permitir scroll en toda la página para dispositivos pequeños */
+    body {
+        height: auto;
+        overflow-y: auto;
+    }
+
+    /* El contenedor principal apila los elementos verticalmente */
+    .wrapper {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+        padding: 10px;
+    }
+
+    /* La barra lateral se convierte en un menú superior de navegación */
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 10px;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .nav-buttons-container {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .nav-btn {
+        margin-bottom: 0;
+        justify-content: center;
+        flex: 1; /* Los botones se reparten el ancho por igual */
+        padding: 12px;
+    }
+    
+    .nav-btn:hover {
+        transform: translateY(-2px); /* Cambiamos el efecto hover para pantallas táctiles */
+    }
+
+    /* Ajuste para que las columnas de Bootstrap tengan borde inferior en lugar de lateral */
+    .border-lg-end {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* El footer se reordena en bloque vertical */
+    .premium-footer {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        gap: 15px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
+}
+
+/* Ajustes finos para celulares muy pequeños */
+@media (max-width: 480px) {
+    .responsive-nav h5 {
+        font-size: 1.1rem;
+    }
+    
+    .nav-text {
+        display: none; /* Oculta el texto y deja solo los iconos en celulares muy chicos */
+    }
+    
+    .nav-btn {
+        font-size: 1.5rem; /* Iconos más grandes */
+    }
 }
